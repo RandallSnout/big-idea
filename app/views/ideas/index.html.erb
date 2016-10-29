@@ -1,0 +1,41 @@
+<h1>Hello <%= @user.alias %></h1>
+<div class="row">
+<div class="col s10 offset-s1">
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <p class="error"> * <%=error%></p>
+    <% end %>
+  <% end %>
+	<form action="/ideas/<%= @user.id %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<div class="input-field col s12">
+	<label for="newIdea">New Idea</label>
+	<input id="newIdea" type="text" name="content">
+	</div>
+	<input class="waves-effect waves-light btn" type="submit" value="Idea!">
+</form>
+</div>
+</div>
+<div class="row">
+<% @ideas.sort_by{|l| -l.likes.count }.each do |i| %>
+  <p><a href="/users/<%= i.user.id %>"><%= i.user.alias %></a>  says: <%= i.content %></p> 
+  <% if i.user == current_user %>
+    <form action='/ideas/<%= i.id %>' method='post'>
+      <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+      <input type='hidden' name='_method' value='delete'>
+      <input class="waves-effect waves-light btn red" type='submit' value='Delete'>
+      </form>
+  <% end %>
+	<p><a href="/ideas/show/<%= i.id %>"> <%= i.likes.count %> people</a> like this.</p>
+  <% if i.users_liked.include?(current_user) %>
+    <p>You already Liked It.</p>
+  <% else %> 
+    <form action='/likes' method='post'>
+      <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+      <input type='hidden' name='i_id' value='<%= i.id %>'>
+      <input class="waves-effect waves-light btn" type='submit' value='Like'>
+    </form>
+  <% end %> 
+<hr />
+<% end %>
+</div>

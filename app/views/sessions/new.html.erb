@@ -1,35 +1,53 @@
 <div class="row">
+<h1>Welcome To Big Ideas!</h1>
 <div class="col s6">
-<h1>Please Register</h1>
+
+<h3>Please Register</h3>
 	<% if flash[:errors] %>
 		<% flash[:errors].each do |error| %>
 			<p class="error"> * <%=error%></p>
 		<% end %>
 	<% end %>
-<form action="/users/register" method="post">
+<form action="/sessions/register" method="post">
 	<input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
-	<label for="Name">Name</label>
-	<input id="Name" type="text" name="name">
-	<label for="Email">Email</label>
-	<input id="Email" type="text" name="email">
-	<label for="Password">Password</label>
-	<input id="Password" type="password" name="password">
-	<label for="passConfirm">Password Confirmation</label>
-	<input id="passConfirm" type="password" name="password_confirmation">
+	<div class="input-field col s12">
+		<label for="Name">Name</label>
+		<input id="Name" type="text" name="name">
+	</div>
+	<div class="input-field col s12">
+		<label for="Alias">Alias</label>
+		<input id="Alias" type="text" name="alias">
+	</div>
+	<div class="input-field col s12">
+		<label for="Email">Email</label>
+		<input id="Email" type="text" name="email">
+	</div>
+	<div class="input-field col s12">
+		<label for="Password">Password</label>
+		<input id="Password" type="password" name="password">
+	</div>
+	<div class="input-field col s12">
+		<label for="passConfirm">Password Confirmation</label>
+		<input id="passConfirm" type="password" name="password_confirmation">
+	</div>
 	<input class="waves-effect waves-light btn" type="submit" value="Join">
 </form>
 </div>
 <div class="col s6">
-<h1>Please Login</h1>
+<h3>Please Login</h3>
 <% if flash[:error] %>
 	<p class="error"><%= flash[:error] %></p>
 <% end %>
 <form action="/sessions/login" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
-	<label for="Email">Email</label>
-	<input id="Email" type="text" name="email">
-	<label for="Password">Password:</label>
-	<input id="Password" type="password" name="password">
+	<div class="input-field col s12">
+		<label for="Email">Email</label>
+		<input id="Email" type="text" name="email">
+	</div>
+	<div class="input-field col s12">
+		<label for="Password">Password:</label>
+		<input id="Password" type="password" name="password">
+	</div>
 	<input class="waves-effect waves-light btn" type="submit" value="Log In">
 </form>
 </div>

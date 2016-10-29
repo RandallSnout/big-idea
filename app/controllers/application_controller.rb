@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id]) if session[:user_id]
   end
   def require_correct_user
-    user = User.find(params[:id])
-    redirect_to "/users/#{current_user.id}" if current_user != user
+    user = User.find(current_user.id)
+    redirect_to "/bright_ideas/#{current_user.id}" if current_user != user
   end
   def require_login
-    redirect_to '/users/login' if session[:user_id] == nil
+    redirect_to '/' if session[:user_id] == nil
   end
   helper_method :current_user
 end

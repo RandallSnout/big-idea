@@ -8,6 +8,14 @@
 </head>
 <body>
 <div class="container">
+<% if current_user %>
+  <form action='/sessions' method='post'>
+    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+    <input type='hidden' name='_method' value='delete'>
+    <input class="waves-effect waves-light btn red" type='submit' value='Log Out'>
+  </form>
+<% end %>
+
 <%= yield %>
 </div>
 </body>

@@ -1,0 +1,20 @@
+<a class="waves-effect waves-light btn" href="/bright_ideas/<%= current_user.id %>">Back</a>
+<h5><%= @idea.alias %> says:</h5>
+<h2><%= @idea.content %></h2>
+      <table>
+        <thead>
+          <tr>
+              <th data-field="id">Alias</th>
+              <th data-field="name">Name</th>
+          </tr>
+        </thead>
+
+        <tbody>
+	<% @likers.each do |l| %>
+          <tr>
+            <td><%= l.alias %></td>
+            <td><%= l.name %></td>
+          </tr>
+    <% end %>
+        </tbody>
+      </table>
