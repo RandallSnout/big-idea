@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 			session[:user_id] = @user.id
 			redirect_to "/bright_ideas/#{@user.id}"
 		else
-			flash[:errors] = user.errors.full_messages
+			flash[:errors] = @user.errors.full_messages
 			redirect_to :back
 		end
 	end
