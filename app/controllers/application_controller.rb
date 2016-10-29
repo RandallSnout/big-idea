@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
   def require_correct_user
     user = User.find(current_user.id)
-    redirect_to "/bright_ideas/#{current_user.id}" if current_user != user
+    redirect_to "/bright_ideas" if current_user != user
   end
   def require_login
     redirect_to '/' if session[:user_id] == nil

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root "sessions#new"
   post "sessions/register" => "sessions#create"
   post "sessions/login" => "sessions#login"
-  get "bright_ideas/:id" => "ideas#index"
+  get "bright_ideas" => "ideas#index"
   post "ideas/:id" => "ideas#create"
   get "users/:id" => "users#show"
-  get "ideas/show/:id" => "ideas#show"
+  get "bright_ideas/:id" => "ideas#show"
   delete "sessions" => 'sessions#destroy'
   delete "ideas/:id" => "ideas#destroy"
   post "likes" => "likes#create"

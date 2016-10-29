@@ -22,7 +22,7 @@ class IdeasController < ApplicationController
 
   def show
   	@idea = User.joins(:ideas).select("content", :alias, "ideas.id").find_by("ideas.id = #{params[:id]}")
-  	@likers = Like.joins(:user).select("alias", "name").where("idea_id = #{params[:id]}")
+  	@likers = Like.joins(:user).select("users.id as id", "alias", "name").where("idea_id = #{params[:id]}")
   end
 
   def destroy
