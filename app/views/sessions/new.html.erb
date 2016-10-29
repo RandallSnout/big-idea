@@ -1,5 +1,25 @@
 <div class="row">
-<div class="col s6 offset-s3">
+<div class="col s6">
+<h1>Please Register</h1>
+	<% if flash[:errors] %>
+		<% flash[:errors].each do |error| %>
+			<p class="error"> * <%=error%></p>
+		<% end %>
+	<% end %>
+<form action="/users/register" method="post">
+	<input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+	<label for="Name">Name</label>
+	<input id="Name" type="text" name="name">
+	<label for="Email">Email</label>
+	<input id="Email" type="text" name="email">
+	<label for="Password">Password</label>
+	<input id="Password" type="password" name="password">
+	<label for="passConfirm">Password Confirmation</label>
+	<input id="passConfirm" type="password" name="password_confirmation">
+	<input class="waves-effect waves-light btn" type="submit" value="Join">
+</form>
+</div>
+<div class="col s6">
 <h1>Please Login</h1>
 <% if flash[:error] %>
 	<p class="error"><%= flash[:error] %></p>
@@ -12,7 +32,5 @@
 	<input id="Password" type="password" name="password">
 	<input class="waves-effect waves-light btn" type="submit" value="Log In">
 </form>
-	<p>Not a Memeber?</p>
-	<a class="waves-effect waves-light btn" href="/">Back</a>
 </div>
 </div>

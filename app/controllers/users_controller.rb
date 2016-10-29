@@ -2,8 +2,7 @@ class UsersController < ApplicationController
 	before_action :current_user, only:[:edit, :update, :destroy]
 	before_action :require_login, except: [:new, :create]
 	before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
-  def new
-  end
+
   def create
   	user = User.new(name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
   	if user.save
