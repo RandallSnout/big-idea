@@ -44,7 +44,7 @@ group :development, :test do
 end
 
 
-gem 'rails-footnotes', '>= 4.0.0'
+# gem 'rails-footnotes', '>= 4.0.0'
 gem 'hirb', '~> 0.7.3'
 gem 'autoprefixer-rails', '~> 6.5'
 gem 'bootstrap-sass', '~> 3.3'
